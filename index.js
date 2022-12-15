@@ -1,12 +1,22 @@
 const express = require('express');
 const app = express();
-const port = 8000;
+const port = 8004;
+const cookieParser = require('cookie-parser');
 
 //require express ejs layouts
 const expressLayouts = require('express-ejs-layouts');
 
 //require mongoose db
 const db = require('./config/mongoose');
+
+//middleware(parser) to get form data
+app.use(express.urlencoded({extended: true}));
+
+//use cookie parser
+app.use(cookieParser());
+
+//use created db schema
+const User = require('./models/user');
 
 //set static files path
 app.use(express.static('./assets'));

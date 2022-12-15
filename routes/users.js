@@ -5,7 +5,9 @@ const router = express.Router();
 const usersController = require('../controllers/users_controller');
 
 router.get('/', usersController.users);
-router.get('/profile', usersController.profile); // link will be /users/profile
-router.get('/category', usersController.category);
+router.get('/sign-up', usersController.signUp);
+router.get('/sign-in', usersController.signIn);
+
+router.post('/create', usersController.createUser);
 
 module.exports = router;
