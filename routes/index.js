@@ -10,4 +10,6 @@ router.get('/', homeController.home);
 router.use('/users', require('./users'));  // any request with /users goes to users router settings
 router.use('/posts', require('./posts'));
 
+router.use('/comments', require('./comments'));
+
 module.exports = router;
