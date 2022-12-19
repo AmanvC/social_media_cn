@@ -3,11 +3,11 @@ const Comment = require('../models/comment');
 const Post = require('../models/post');
 
 module.exports.create = function(req, res){
-    Post.findById(req.body.post, function(err, post){
+    Post.findById(req.body.post_id, function(err, post){
         if(post){
             Comment.create({
                 content: req.body.content,
-                post: req.body.post,
+                post: req.body.post_id,
                 user: req.user._id
             }, function(err, comment){
                 if(err){
