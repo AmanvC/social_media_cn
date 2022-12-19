@@ -1,6 +1,6 @@
 const User = require('../models/user');
 
-module.exports.users = function(req, res){
+module.exports.profile = function(req, res){
     return res.render('./user_profile', {
         title: "User Profile"
     });
@@ -8,6 +8,9 @@ module.exports.users = function(req, res){
 
 //render signup page
 module.exports.signUp = function(req, res){
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile');
+    }
     return res.render('./user_sign_up', {
         title: "Codeial | Sign Up"
     })
@@ -15,6 +18,9 @@ module.exports.signUp = function(req, res){
 
 //render signin page
 module.exports.signIn = function(req, res){
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile');
+    }
     return res.render('./user_sign_in', {
         title: "Codeial | Sign In"
     })
@@ -47,5 +53,13 @@ module.exports.createUser = function(req, res){
 
 //Sign In and create a session for the user
 module.exports.createSession = function(req, res){
-    //todo
+    return res.redirect('/'); //assuming user has already signed in, the user will go here
 }
+
+module.exports.destroySession = function(req, res){
+    req.logout(function(err){
+        // console.log(`Error in signing out: ${err}`);
+    }); //function given to request by passport.js
+    return res.redirect('/');
+}
+

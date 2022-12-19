@@ -1,0 +1,28 @@
+footer{
+    background-color: #757475;
+    color: white;
+    display: flex;
+    padding: 10px;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1.2rem;
+    height: 70px;
+
+    p{
+        margin: 0;
+    }
+
+    ul{
+        margin: 0;
+        list-style: none;
+        
+        li{
+            font-size: 1.3rem;
+
+            a{
+                text-decoration: none;
+                color: #fff;
+            }
+        }
+    }
+}
