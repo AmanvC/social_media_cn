@@ -1,8 +1,9 @@
 body{
     margin: 0;
-    // text-align: center;
+    overflow: hidden;
 
     #layout-main{
-        height: 100vh;
+        height: 85vh;
+        overflow-y: scroll;
     }
 }

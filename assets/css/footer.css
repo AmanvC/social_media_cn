@@ -6,7 +6,10 @@ footer {
   justify-content: flex-start;
   align-items: center;
   font-size: 1.2rem;
-  height: 70px; }
+  height: 70px;
+  position: absolute;
+  bottom: 0;
+  width: 100%; }
   footer p {
     margin: 0; }
   footer ul {
