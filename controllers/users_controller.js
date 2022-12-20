@@ -40,28 +40,17 @@ module.exports.signIn = function(req, res){
 }
 
 //get the signup data
-module.exports.createUser = function(req, res){
+module.exports.createUser = async function(req, res){
     if(req.body.password !== req.body.confirm_password){
         return res.redirect('back');
     }
-    
-    User.findOne({email: req.body.email}, function(err, user){
-        if(err){
-            console.log(`Error in finding user in signing up: ${err}`);
-            return;
-        }
-        if(user){
-            return res.redirect('back');
-        }else{
-            User.create(req.body, function(err, user){
-                if(err){
-                    console.log(`Error in creating user while signing up: ${err}`)
-                    return;
-                }
-                return res.redirect('/users/sign-in')
-            })
-        }
-    })
+    let user = await User.findOne({email: req.body.email});
+    if(user){
+        return res.redirect('back');
+    }else{
+        await User.create(req.body)
+        return res.redirect('/users/sign-in');
+    }
 }
 
 //Sign In and create a session for the user
